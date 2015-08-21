@@ -1,0 +1,42 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath group: 'org.gradlefx', name: 'gradlefx', version: '1.1'
+	}
+}
+
+apply plugin: 'gradlefx'
+
+type = 'air'
+version = '1.0-SNAPSHOT'
+
+repositories {
+        ivy {
+                name 'Apache Flex'
+                // pattern for url http://archive.apache.org/dist/flex/4.9.0/binaries/apache-flex-sdk-4.9.0-bin.zip
+                artifactPattern 'http://archive.apache.org/dist/flex/[revision]/binaries/[module]-[revision]-bin.[ext]'
+        }
+        ivy {
+                name 'Adobe Air SDK'
+                artifactPattern 'http://download.macromedia.com/air/mac/download/[revision]/[module].[ext]'
+        }
+}
+
+dependencies {
+  flexSDK group: 'org.apache', name: 'apache-flex-sdk', version: '4.14.0', ext: 'tar.gz'
+  airSDK  group: 'com.adobe', name: 'AdobeAIRSDK', version: '18.0', ext: 'tbz2'
+}
+
+sdkAutoInstall {
+	showPrompts	= false
+}
+
+air {
+	storepass = 'gradlefx'
+	keystore = 'sdk-autoinstall.p12'
+	includeFileTrees = [fileTree(dir: 'src/main/actionscript/', include: 'assets/appIcon.png')]
+	applicationDescriptor = 'src/main/actionscript/sdk-autoinstall.xml'
+}
