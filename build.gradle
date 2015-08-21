@@ -14,24 +14,24 @@ type = 'air'
 version = '1.0-SNAPSHOT'
 
 repositories {
-        ivy {
-                name 'Apache Flex'
-                // pattern for url http://archive.apache.org/dist/flex/4.9.0/binaries/apache-flex-sdk-4.9.0-bin.zip
-                artifactPattern 'http://archive.apache.org/dist/flex/[revision]/binaries/[module]-[revision]-bin.[ext]'
-        }
-        ivy {
-                name 'Adobe Air SDK'
-                artifactPattern 'http://download.macromedia.com/air/mac/download/[revision]/[module].[ext]'
-        }
+	ivy {
+		// pattern for url http://archive.apache.org/dist/flex/4.9.0/binaries/apache-flex-sdk-4.9.0-bin.zip
+		name 'Apache Flex'
+		artifactPattern 'http://archive.apache.org/dist/flex/[revision]/binaries/[module]-[revision]-bin.[ext]'
+	}
+	ivy {
+		name 'Adobe Air SDK'
+		artifactPattern 'http://download.macromedia.com/air/mac/download/[revision]/[module].[ext]'
+	}
 }
 
 dependencies {
-  flexSDK group: 'org.apache', name: 'apache-flex-sdk', version: '4.14.0', ext: 'tar.gz'
-  airSDK  group: 'com.adobe', name: 'AdobeAIRSDK', version: '18.0', ext: 'tbz2'
+	flexSDK group: 'org.apache', name: 'apache-flex-sdk', version: '4.14.0', ext: 'tar.gz'
+	airSDK group: 'com.adobe', name: 'AdobeAIRSDK', version: '18.0', ext: 'tbz2'
 }
 
 sdkAutoInstall {
-	showPrompts	= false
+	showPrompts = false
 }
 
 air {
